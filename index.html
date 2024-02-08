@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="bg"></canvas>
+
+  <div id="weather-container">
+    <input type="text" id="city" placeholder="Enter city" style="margin: 1vw; width: fit-content;"> <br>
+    <button onclick="getWeather()" style="width: fit-content">Search</button>
+  </div>
+
+  <div id="text-container">
+    <div id="weather-icon"></div>
+    <div id="hourly-forecast"></div>
+    <div id="temp-div" class="center-text"></div>
+    <div id="weather-info" class="center-text"></div>
+  </div>
+
+  <script src="api.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>

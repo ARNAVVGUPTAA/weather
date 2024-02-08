@@ -1,0 +1,48 @@
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+body {
+  background-color: transparent;
+}
+
+#text-container {
+  color: white;
+  z-index: 10;
+}
+
+#weather-container {
+  display: grid;
+  justify-items: center;
+}
+
+.hourly-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#hourly-forecast {
+  width: 20%;
+  text-align: center;
+}
+
+.center-text {
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#temp-div{
+  margin-top: auto;
+  font-size: 3vw;
+}
+
+.temp {
+  font-size: 4vw;
+}
