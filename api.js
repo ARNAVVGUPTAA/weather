@@ -1,9 +1,11 @@
+let loaded = 0;
+window.loaded = loaded;
+
 function getWeather() {
 
     while (window.myThreeJsScene.children.length) {
         window.myThreeJsScene.remove(window.myThreeJsScene.children[0]);
     }
-
 
     const apikey = '49a7458399968527b61694608957536f';
     const city = document.getElementById('city').value;
@@ -11,6 +13,12 @@ function getWeather() {
     if (!city) {
         alert('please enter the city');
         return;
+    } else {    
+        const containerWeather = document.getElementById("weather-container");
+        const image = document.getElementById("world");
+
+        containerWeather.style.height = '10vh';
+        image.style.display = 'none';
     }
 
     const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
@@ -38,6 +46,9 @@ function getWeather() {
 }
 
 function displayWeather(data) {
+
+    loaded++;
+
     const tempDivInfo = document.getElementById('temp-div');
     const weatherDivInfo = document.getElementById('weather-info');
     const weatherIcon = document.getElementById('weather-icon');
@@ -71,7 +82,7 @@ function displayWeather(data) {
             window.myThreeJsScene.add(window.cloud2);
         }
 
-        const isCloudy = (data.weather[0].main === 'Clouds' || data.weather[0].main === 'Haze');
+        const isCloudy = (data.weather[0].main === 'Clouds' || data.weather[0].main === 'Haze' || data.weather[0].main === 'Mist');
         if(isCloudy) {
             window.myThreeJsScene.add(window.cloud1);
             window.myThreeJsScene.add(window.cloud2);
@@ -99,6 +110,9 @@ function displayWeather(data) {
     }
 }
 function displayHourlyForcast(hourlyData) {
+
+    loaded++;
+
     const hourlyDivForecast = document.getElementById('hourly-forecast');
     const next24Hours = hourlyData.slice(0, 8);
     hourlyDivForecast.innerHTML = '<h2>HOURLY FORECAST</h2>';

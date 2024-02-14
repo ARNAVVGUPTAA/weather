@@ -2,6 +2,16 @@ import './style.css';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+const loadingAnimation = document.getElementById('loader');
+window.loadingAnimation = loadingAnimation;
+
+THREE.DefaultLoadingManager.onProgress = (url , item, total) => {
+    if(window.loaded == 2){
+        console.log(".");
+        loadingAnimation.style.display = 'flex';
+    }
+}
+
 window.onload = function () {
 
     const SCENE = new THREE.Scene();
@@ -45,6 +55,7 @@ window.onload = function () {
     rainGeo.setAttribute('velocity', new THREE.BufferAttribute(new Float32Array(15000 * 3), 3));
 
     const positions = rainGeo.attributes.position.array;
+    console.log(positions);
     const velocities = rainGeo.attributes.velocity.array;
     var velocity;
     for (let i = 0; i < 15000; i++) {

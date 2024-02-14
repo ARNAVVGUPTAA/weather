@@ -11,10 +11,11 @@
 
 <body>
   <canvas id="bg"></canvas>
-
+  <img id="world" src="./world.png" style="object-fit: cover;">
+  
   <div id="weather-container">
-    <input type="text" id="city" placeholder="Enter city" style="margin: 1vw; width: fit-content;"> <br>
-    <button onclick="getWeather()" style="width: fit-content">Search</button>
+    <input type="text" id="city" placeholder="Enter the City Name" style="height: 6.95vh; width: 50%;">
+    <button id="button" onclick="getWeather()" style="scale: 1.355;"><img src="./search.ico"></button>
   </div>
 
   <div id="text-container">
@@ -24,8 +25,14 @@
     <div id="weather-info" class="center-text"></div>
   </div>
 
-  <script src="api.js"></script>
-  <script type="module" src="main.js"></script>
+  <div id="loader" style="z-index: 110; position: absolute; top: 0; left: 0;">
+    <div class="box-load1"></div>
+    <div class="box-load2"></div>
+    <div class="box-load3"></div>
+  </div>
+
+  <script src="./api.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>
