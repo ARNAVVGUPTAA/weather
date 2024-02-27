@@ -1,7 +1,6 @@
-let loaded = 0;
-window.loaded = loaded;
-
 function getWeather() {
+
+    document.getElementById('ld-ripple').style.display = 'block';
 
     while (window.myThreeJsScene.children.length) {
         window.myThreeJsScene.remove(window.myThreeJsScene.children[0]);
@@ -47,8 +46,6 @@ function getWeather() {
 
 function displayWeather(data) {
 
-    loaded++;
-
     const tempDivInfo = document.getElementById('temp-div');
     const weatherDivInfo = document.getElementById('weather-info');
     const weatherIcon = document.getElementById('weather-icon');
@@ -84,8 +81,7 @@ function displayWeather(data) {
 
         const isCloudy = (data.weather[0].main === 'Clouds' || data.weather[0].main === 'Haze' || data.weather[0].main === 'Mist');
         if(isCloudy) {
-            window.myThreeJsScene.add(window.cloud1);
-            window.myThreeJsScene.add(window.cloud2);
+            window.myThreeJsScene.add(window.cloud);
         }
 
         const isClear = data.weather[0].main === 'Clear';
@@ -111,8 +107,6 @@ function displayWeather(data) {
 }
 function displayHourlyForcast(hourlyData) {
 
-    loaded++;
-
     const hourlyDivForecast = document.getElementById('hourly-forecast');
     const next24Hours = hourlyData.slice(0, 8);
     hourlyDivForecast.innerHTML = '<h2>HOURLY FORECAST</h2>';
@@ -132,4 +126,5 @@ function displayHourlyForcast(hourlyData) {
 function ShowImage() {
     const weatherIcon = document.getElementById('weather-icon');
     weatherIcon.style.display = 'block';
+    document.getElementById('ld-ripple').style.display = 'none';
 }
